@@ -25,11 +25,11 @@ mongoose.set('strictQuery', false);
 
 var dev_db_url  = "mongodb+srv://maks22271698:MFEcbpWB1roL59VT@cluster0.il8ao0d.mongodb.net/?appName=Cluster0";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
+main().catch((err) => console.log(err));
+async function main() {
+    await mongoose.connect(mongoDB);
+}
 
 
 // view engine setup
